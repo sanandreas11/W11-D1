@@ -156,8 +156,8 @@ const getMovieInfo = function () {
         throw new Error("errore")
       }
     })
-    .then((data:OmdbData) => {
-      data.
+    .then((data: OmdbData) => {
+      console.log(data.imdbRating)
     })
     .catch((err) => {
       console.log(err)
