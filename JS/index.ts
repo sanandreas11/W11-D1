@@ -52,3 +52,114 @@ const Tupple: [string, string, string, number, number] = [
   360,
   420,
 ]
+//12) Qual è la differenza tra type e interface?
+//type va usato per le unioni mentre inteface va usato per la creazione dei oggetti
+//13) Definisci un'interfaccia in TypeScript per un oggetto dotato di proprietà "firstname", "lastname", e "age"
+interface Persona {
+  firstName: string
+  lastName: string
+  age: number
+}
+//14) Crea un'interfaccia per un utente con email obbligatoria e telefono opzionale.
+interface Utente extends Persona {
+  email: string
+  phone?: string
+}
+//15) Crea un array tipizzato di oggetti "Studente" con nome e voto.
+interface Studente {
+  nome: string
+  voto: number
+}
+
+const studenti: Studente[] = [
+  { nome: "Luca", voto: 28 },
+  { nome: "Sara", voto: 30 },
+]
+//16) Crea un'interfaccia base "Veicolo" e estendila per creare "Auto".
+interface Veicolo {
+  marca: string
+  modello: string
+}
+
+interface Auto extends Veicolo {
+  targa: string
+}
+//17) Crea un oggetto che implementi l'interfaccia Auto.
+const miaAuto: Auto = {
+  marca: "Toyota",
+  modello: "Yaris",
+  targa: "MRPL8S",
+}
+//18) Cosa sono i Generics in TypeScript?
+//i generics vanno usati nei oggetti per modificare il loro tipo di valore dinamicamente ad esempio:
+interface PCPlatforms {
+  steam: boolean
+  epic: boolean
+  goog: boolean
+}
+
+interface game<A> {
+  name: string
+  price: number
+  isItOnPC: A
+}
+
+//19) È possibile avere più tipi generici in un'interfaccia?
+//Sì
+interface Coppia<A, B> {
+  primo: A
+  secondo: B
+}
+//20)
+
+export interface OmdbData {
+  Title: string
+  Year: string
+  Rated: string
+  Released: string
+  Runtime: string
+  Genre: string
+  Director: string
+  Writer: string
+  Actors: string
+  Plot: string
+  Language: string
+  Country: string
+  Awards: string
+  Poster: string
+  Ratings: Rating[]
+  Metascore: string
+  imdbRating: string
+  imdbVotes: string
+  imdbID: string
+  Type: string
+  DVD: string
+  BoxOffice: string
+  Production: string
+  Website: string
+  Response: string
+}
+
+export interface Rating {
+  Source: string
+  Value: string
+}
+
+const omdbUrl = "https://www.omdbapi.com/?apikey=24ad60e9&i=tt1201607"
+
+const getMovieInfo = function () {
+  fetch(omdbUrl)
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        throw new Error("errore")
+      }
+    })
+    .then((data:OmdbData) => {
+      data.
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
